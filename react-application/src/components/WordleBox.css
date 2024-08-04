@@ -1,0 +1,26 @@
+.main_box{
+    height: 500px;
+    width: 500px;
+    display: flex;
+    flex-flow: column;
+    border-right: 2px solid black;
+    border-bottom: 2px solid black;
+}
+
+.main_box li{
+    height: 100px;
+    width: 500px;
+    list-style-type: none;
+    display: flex;
+    flex-flow: row;
+}
+
+.main_box div{
+    height: 100px;
+    width: 100px;
+    border-left: 2px solid black;
+    border-top: 2px solid black;
+    font-size: 32px;
+    text-align: center;
+    line-height: 100px;
+}
