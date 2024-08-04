@@ -1,7 +1,11 @@
-import './WordleApp.css';
 import { useState } from 'react';
+import './WordleApp.css';
+
+import WordleBox from './WordleBox';
+import InputBox from './InputBox';
 
 const WordleApp = () => {
+    
     const [inputWord, setInputWord] = useState("");
 
     const handleInputOnChange = (e) => {
@@ -9,68 +13,27 @@ const WordleApp = () => {
     }
 
 
+    return (<div>
+        <WordleBox content={[
+            [1,1,1,1,1],
+            [1,1,2,1,1],
+            [1,1,3,1,1],
+            [1,1,4,1,1],
+            [1,1,5,1,1]
+        ]}></WordleBox>
 
-    return (<div className='main_board'>
+        <InputBox currentVal={inputWord} callOnChange={(e) => handleInputOnChange(e)}></InputBox>
+        
+        </div>);
 
-        <div className="wordle_box">
-            <div className='first_row'>
-                <li>
-                    <button>{inputWord[0]}</button>
-                    <button></button>
-                    <button></button>
-                    <button></button>
-                    <button></button>
-                </li>
-            </div>
-            <div className='second_row'>
-                <li>
-                    <button></button>
-                    <button></button>
-                    <button></button>
-                    <button></button>
-                    <button></button>
-                </li>
-            </div>
-            <div className='third_row'>
-                <li>
-                    <button></button>
-                    <button></button>
-                    <button></button>
-                    <button></button>
-                    <button></button>
-                </li>
-            </div>
-            <div className='fourth_row'>
-                <li>
-                    <button></button>
-                    <button></button>
-                    <button></button>
-                    <button></button>
-                    <button></button>
-                </li>
-            </div>
-            <div className='fifth_row'>
-                <li>
-                    <button></button>
-                    <button></button>
-                    <button></button>
-                    <button></button>
-                    <button></button>
-                </li>
-            </div>
-        </div>
 
-        <div className='inputBox'>
-            <input type='text' value={0} onChange={(e) => handleInputOnChange(e)} placeholder='Kelime giriniz...' />
-            <button> ENTER </button>
 
-        </div>
-    </div>);
+
+
+
+
+
 };
-
-
-
-
 
 
 export default WordleApp; 
