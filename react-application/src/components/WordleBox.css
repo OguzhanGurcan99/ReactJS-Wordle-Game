@@ -24,3 +24,25 @@
     text-align: center;
     line-height: 100px;
 }
+
+.correct{
+    background-color: green;
+    height: 100px;
+    width: 100px;
+    border-left: 2px solid black;
+    border-top: 2px solid black;
+    font-size: 32px;
+    text-align: center;
+    line-height: 100px;
+}
+
+.false{
+    background-color: red;
+    height: 100px;
+    width: 100px;
+    border-left: 2px solid black;
+    border-top: 2px solid black;
+    font-size: 32px;
+    text-align: center;
+    line-height: 100px;
+}

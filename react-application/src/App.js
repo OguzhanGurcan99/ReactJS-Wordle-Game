@@ -2,7 +2,7 @@
 import WordleApp from './components/WordleApp';
 
 function App() {
-        return <WordleApp></WordleApp>;
+        return <WordleApp ></WordleApp>;
 
 
 
