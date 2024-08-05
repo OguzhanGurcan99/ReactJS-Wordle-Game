@@ -17,25 +17,26 @@ const WordleBox = (props) => {
             <div className={props.colorList[1][4]}>{props.content[1][4]}</div>
         </li>
         <li>
-            <div>{props.content[2][0]}</div>
-            <div>{props.content[2][1]}</div>
-            <div>{props.content[2][2]}</div>
-            <div>{props.content[2][3]}</div>
-            <div>{props.content[2][4]}</div>
+
+            <div className={props.colorList[2][0]}>{props.content[2][0]}</div>
+            <div className={props.colorList[2][1]}>{props.content[2][1]}</div>
+            <div className={props.colorList[2][2]}>{props.content[2][2]}</div>
+            <div className={props.colorList[2][3]}>{props.content[2][3]}</div>
+            <div className={props.colorList[2][4]}>{props.content[2][4]}</div>
         </li>
         <li>
-            <div>{props.content[3][0]}</div>
-            <div>{props.content[3][1]}</div>
-            <div>{props.content[3][2]}</div>
-            <div>{props.content[3][3]}</div>
-            <div>{props.content[3][4]}</div>
+            <div className={props.colorList[3][0]}>{props.content[3][0]}</div>
+            <div className={props.colorList[3][1]}>{props.content[3][1]}</div>
+            <div className={props.colorList[3][2]}>{props.content[3][2]}</div>
+            <div className={props.colorList[3][3]}>{props.content[3][3]}</div>
+            <div className={props.colorList[3][4]}>{props.content[3][4]}</div>
         </li>
         <li>
-            <div>{props.content[4][0]}</div>
-            <div>{props.content[4][1]}</div>
-            <div>{props.content[4][2]}</div>
-            <div>{props.content[4][3]}</div>
-            <div>{props.content[4][4]}</div>
+            <div className={props.colorList[4][0]}>{props.content[4][0]}</div>
+            <div className={props.colorList[4][1]}>{props.content[4][1]}</div>
+            <div className={props.colorList[4][2]}>{props.content[4][2]}</div>
+            <div className={props.colorList[4][3]}>{props.content[4][3]}</div>
+            <div className={props.colorList[4][4]}>{props.content[4][4]}</div>
         </li>
 
 

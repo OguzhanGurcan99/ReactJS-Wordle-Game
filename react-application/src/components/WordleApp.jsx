@@ -7,35 +7,37 @@ import InputBox from './InputBox';
 const WordleApp = (props) => {
 
     const answerWord = "KAVUN";
-    const [inputWord, setInputWord] = useState("");
-    const [color, setColor] = useState([]);
-    const [allColorList, setallColorList] = useState( [1,2,3,4,5],[6,7,8,9,10] ,[1,2,3,4,5] ,[1,2,3,4,5] ,[1,2,3,4,5]);
-    const [inputList, setInputList] = useState([1,2,3,4,5])
+    const [allColorList, setAllColorList] = useState([["", "", "", "", ""], ["", "", "", "", ""], ["", "", "", "", ""], ["", "", "", "", ""], ["", "", "", "", ""]]);
+    const [inputList, setInputList] = useState([["", "", "", "", ""], ["", "", "", "", ""], ["", "", "", "", ""], ["", "", "", "", ""], ["", "", "", "", ""]]);
     const [currentRow, setCurrentRow] = useState(0);
 
-    
+    const [temp, setTemp] = useState("");
+
     const handleInputOnChange = (e) => {
-        setInputWord(e.target.value);
+        setTemp(e.target.value);
         
+        //todo update input list with (temp)
     }
 
-    const submitAnswer = () => {
+    for (let i=0; i<5; i++){
+        inputList[currentRow][i] = temp[i];
+    }
 
-        let cl = [];
-        inputList[currentRow] = inputWord;
-        for (let i = 0; i < 5; i++) {
-            if (inputWord[i] === answerWord[i]) {
-                cl[i] = "correct";
-            }
-            else {
-                cl[i] = "false";
+    
+
+
+    const submitAnswer = () => {
+        console.log(currentRow);
+        for (let i=0; i<5; i++){
+            if(inputList[currentRow][i] === answerWord[i]){
+                allColorList[currentRow][i] = "correct";
+            }else{
+                allColorList[currentRow][i] = "false";
             }
         }
-        setColor(cl);
-        allColorList[currentRow] = color;
-        
-        setCurrentRow(currentRow + 1);
 
+        setTemp("");
+        setCurrentRow(currentRow + 1);
     }
 
 
@@ -48,18 +50,11 @@ const WordleApp = (props) => {
             [inputList[4][0], inputList[4][1], inputList[4][2], inputList[4][3], inputList[4][4]]
         ]} colorList={allColorList} ></WordleBox>
 
-        <InputBox currentVal={inputWord} callOnChange={(e) => handleInputOnChange(e)} submitAnswer={() => submitAnswer()}></InputBox>
+        <InputBox currentVal={temp} callOnChange={(e) => handleInputOnChange(e)} submitAnswer={() => submitAnswer()}></InputBox>
 
     </div>);
 
 
-
-
-
-
-
-
 };
-
 
 export default WordleApp; 
