@@ -3,42 +3,59 @@ import './WordleApp.css';
 import WordleBox from './WordleBox';
 import InputBox from './InputBox';
 
-
 const WordleApp = (props) => {
 
-    const answerWord = "KAVUN";
+    const answerWord = "YAMUK";
     const [allColorList, setAllColorList] = useState([["", "", "", "", ""], ["", "", "", "", ""], ["", "", "", "", ""], ["", "", "", "", ""], ["", "", "", "", ""]]);
     const [inputList, setInputList] = useState([["", "", "", "", ""], ["", "", "", "", ""], ["", "", "", "", ""], ["", "", "", "", ""], ["", "", "", "", ""]]);
     const [currentRow, setCurrentRow] = useState(0);
-
     const [temp, setTemp] = useState("");
 
     const handleInputOnChange = (e) => {
-        setTemp(e.target.value);
-        
-        //todo update input list with (temp)
-    }
+        const newTemp = e.target.value;
+        setTemp(newTemp);
 
-    for (let i=0; i<5; i++){
-        inputList[currentRow][i] = temp[i];
-    }
-
-    
-
+        const newInputList = [...inputList];
+        for (let i = 0; i < 5; i++) {
+            newInputList[currentRow][i] = newTemp[i] || "";
+        }
+        setInputList(newInputList);
+    };
 
     const submitAnswer = () => {
-        console.log(currentRow);
-        for (let i=0; i<5; i++){
-            if(inputList[currentRow][i] === answerWord[i]){
-                allColorList[currentRow][i] = "correct";
-            }else{
-                allColorList[currentRow][i] = "false";
+        const newColorList = [...allColorList];
+        const answerCharCount = {};
+
+        for (let i = 0; i < 5; i++) {
+
+            if (inputList[currentRow][i] === answerWord[i]) {
+                newColorList[currentRow][i] = "correct";
+            }
+            else {
+                answerCharCount[answerWord[i]] = (answerCharCount[answerWord[i]] || 0) + 1;
             }
         }
 
+        for (let i = 0; i < 5; i++) {
+
+            if (newColorList[currentRow][i] !== "correct") {
+                if (answerWord.includes(inputList[currentRow][i]) && answerCharCount[inputList[currentRow][i]] > 0) {
+
+                    newColorList[currentRow][i] = "nearby";
+                    answerCharCount[inputList[currentRow][i]] += -1;
+
+                }
+                else {
+                    newColorList[currentRow][i] = "false";
+                }
+            }
+        }
+
+        setAllColorList(newColorList);
         setTemp("");
         setCurrentRow(currentRow + 1);
-    }
+    };
+
 
 
     return (<div>
