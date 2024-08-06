@@ -5,7 +5,7 @@ import InputBox from './InputBox';
 
 const WordleApp = (props) => {
 
-    const answerWord = "YAMUK";
+    const answerWord = "TÜZEL";
     const [allColorList, setAllColorList] = useState([["", "", "", "", ""], ["", "", "", "", ""], ["", "", "", "", ""], ["", "", "", "", ""], ["", "", "", "", ""]]);
     const [inputList, setInputList] = useState([["", "", "", "", ""], ["", "", "", "", ""], ["", "", "", "", ""], ["", "", "", "", ""], ["", "", "", "", ""]]);
     const [currentRow, setCurrentRow] = useState(0);
@@ -27,7 +27,6 @@ const WordleApp = (props) => {
         const answerCharCount = {};
 
         for (let i = 0; i < 5; i++) {
-
             if (inputList[currentRow][i] === answerWord[i]) {
                 newColorList[currentRow][i] = "correct";
             }
@@ -37,13 +36,10 @@ const WordleApp = (props) => {
         }
 
         for (let i = 0; i < 5; i++) {
-
             if (newColorList[currentRow][i] !== "correct") {
                 if (answerWord.includes(inputList[currentRow][i]) && answerCharCount[inputList[currentRow][i]] > 0) {
-
                     newColorList[currentRow][i] = "nearby";
                     answerCharCount[inputList[currentRow][i]] += -1;
-
                 }
                 else {
                     newColorList[currentRow][i] = "false";
@@ -55,8 +51,6 @@ const WordleApp = (props) => {
         setTemp("");
         setCurrentRow(currentRow + 1);
     };
-
-
 
     return (<div>
         <WordleBox content={[
@@ -70,7 +64,6 @@ const WordleApp = (props) => {
         <InputBox currentVal={temp} callOnChange={(e) => handleInputOnChange(e)} submitAnswer={() => submitAnswer()}></InputBox>
 
     </div>);
-
 
 };
 
