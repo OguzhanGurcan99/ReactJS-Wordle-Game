@@ -1,6 +1,14 @@
-.inputBox{
-    background-color: red;
-    height: 300px;
-    width: 300px;
+.full_page{
+    
+    display: flex;
+    flex-flow: column;
+    justify-content: space-around;
+    align-items: center;
+
 }
+  
+
+
+
+
 

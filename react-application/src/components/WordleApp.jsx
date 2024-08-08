@@ -5,7 +5,12 @@ import InputBox from './InputBox';
 
 const WordleApp = (props) => {
 
-    const answerWord = "TÜZEL";
+    const [success, setSuccess] = useState("noSuccess");
+    const [message, setMessage] = useState("");
+    const [success2, setSuccess2] = useState("");
+
+
+    const answerWord = "KAVUN";
     const [allColorList, setAllColorList] = useState([["", "", "", "", ""], ["", "", "", "", ""], ["", "", "", "", ""], ["", "", "", "", ""], ["", "", "", "", ""]]);
     const [inputList, setInputList] = useState([["", "", "", "", ""], ["", "", "", "", ""], ["", "", "", "", ""], ["", "", "", "", ""], ["", "", "", "", ""]]);
     const [currentRow, setCurrentRow] = useState(0);
@@ -48,11 +53,24 @@ const WordleApp = (props) => {
         }
 
         setAllColorList(newColorList);
+
+        let checkMe = 0;
+        for (let i = 0; i < 5; i++) {
+            if (newColorList[currentRow][i] === "correct") {
+                checkMe += 1;
+            }
+        }
+        if (checkMe === 5) {
+            setSuccess("congratulations");
+            setMessage("TEBRİKLER")
+            setSuccess2("congra_2");
+        }
+
         setTemp("");
         setCurrentRow(currentRow + 1);
     };
 
-    return (<div>
+    return (<div className='full_page'>
         <WordleBox content={[
             [inputList[0][0], inputList[0][1], inputList[0][2], inputList[0][3], inputList[0][4]],
             [inputList[1][0], inputList[1][1], inputList[1][2], inputList[1][3], inputList[1][4]],
@@ -62,6 +80,12 @@ const WordleApp = (props) => {
         ]} colorList={allColorList} ></WordleBox>
 
         <InputBox currentVal={temp} callOnChange={(e) => handleInputOnChange(e)} submitAnswer={() => submitAnswer()}></InputBox>
+
+
+        
+
+
+
 
     </div>);
 
