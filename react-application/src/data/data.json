@@ -1,0 +1,82 @@
+[
+  {
+    "id": 1,
+    "name": "BALIK"
+  },
+  {
+    "id": 2,
+    "name": "KAYIK"
+  },
+  {
+    "id": 3,
+    "name": "ARABA"
+  },
+  {
+    "id": 4,
+    "name": "DENİZ"
+  },
+  {
+    "id": 5,
+    "name": "VAPUR"
+  },
+  {
+    "id": 6,
+    "name": "LOKAL"
+  },
+  {
+    "id": 7,
+    "name": "BÖLGE"
+  },
+  {
+    "id": 8,
+    "name": "MADEN"
+  },
+  {
+    "id": 9,
+    "name": "KİLİM"
+  },
+  {
+    "id": 10,
+    "name": "CEVİZ"
+  },
+  {
+    "id": 11,
+    "name": "ESMER"
+  },
+  {
+    "id": 12,
+    "name": "BORDO"
+  },
+  {
+    "id": 13,
+    "name": "KALIP"
+  },
+  {
+    "id": 14,
+    "name": "YULAR"
+  },
+  {
+    "id": 15,
+    "name": "SERİN"
+  },
+  {
+    "id": 16,
+    "name": "İDARE"
+  },
+  {
+    "id": 17,
+    "name": "DAİRE"
+  },
+  {
+    "id": 18,
+    "name": "KİTAP"
+  },
+  {
+    "id": 19,
+    "name": "VEKİL"
+  },
+  {
+    "id": 20,
+    "name": "NİŞAN"
+  }
+]
