@@ -2,10 +2,17 @@ import { useState } from 'react';
 import './WordleApp.css';
 import WordleBox from './WordleBox';
 import InputBox from './InputBox';
-import Table from './Table';
-import LetterTable from './LetterTable';
+
+import Navbar from './Navbar';
 
 const WordleApp = (props) => {
+
+    const [animatedLetters, setAnimatedLetters] = useState([]);
+    const [updatedLetters, setUpdatedLetters] = useState(["A", "B", "C", "Ç", "D", "E", "F", "G", "Ğ", "H", "I", "İ", "J", "K", "L", "M", "N", "O", "Ö", "P", "R", "S", "Ş", "T", "U", "Ü", "V", "Y", "Z"])
+    let letters = [...updatedLetters];
+
+
+
 
     const answerWord = props.random;
     const [allColorList, setAllColorList] = useState([["", "", "", "", ""], ["", "", "", "", ""], ["", "", "", "", ""], ["", "", "", "", ""], ["", "", "", "", ""]]);
@@ -15,7 +22,7 @@ const WordleApp = (props) => {
 
     const [reveal, setReveal] = useState("");
 
-    const [usedLetters, setUsedLetters] = useState([["", "", "", "", ""], ["", "", "", "", ""], ["", "", "", "", ""], ["", "", "", "", ""], ["", "", "", "", ""]]);
+
 
     const handleInputOnChange = (e) => {
         const newTemp = e.target.value;
@@ -28,10 +35,17 @@ const WordleApp = (props) => {
         setInputList(newInputList);
     };
 
+
+
     const submitAnswer = () => {
+
         const newColorList = [...allColorList];
         const answerCharCount = {};
 
+        const animatedLettersList = [];
+
+
+        // 1. Doğru harfleri işaretle
         for (let i = 0; i < 5; i++) {
             if (inputList[currentRow][i] === answerWord[i]) {
                 newColorList[currentRow][i] = "correct";
@@ -39,6 +53,25 @@ const WordleApp = (props) => {
             else {
                 answerCharCount[answerWord[i]] = (answerCharCount[answerWord[i]] || 0) + 1;
             }
+
+
+            let empty_let_index = letters.indexOf(inputList[currentRow][i]);
+            if (empty_let_index === -1) {
+                continue;
+            }
+            else {
+                animatedLettersList.push(letters[empty_let_index]);
+                letters[empty_let_index] = "";
+            }
+
+
+            setUpdatedLetters(letters);
+            setAnimatedLetters(animatedLettersList);
+
+
+
+
+
         }
 
         for (let i = 0; i < 5; i++) {
@@ -56,14 +89,6 @@ const WordleApp = (props) => {
         setAllColorList(newColorList);
 
 
-
-        for (let i=0; i<5; i++){
-            usedLetters[currentRow][i] = inputList[currentRow][i]
-        }
-
-
-
-
         setTemp("");
         setCurrentRow(currentRow + 1);
 
@@ -72,35 +97,40 @@ const WordleApp = (props) => {
         }
     };
 
+
+
+
     return (<div className='full_page'>
 
-        <div className='left_panel'>
-            <LetterTable isUsed= {usedLetters}></LetterTable>
+        <Navbar view={updatedLetters}  animatedLetters= {animatedLetters}> </Navbar>
 
-        </div>
+        <div className='mainbar'>
 
-        <div className='center_panel'>
+            <div className='left_panel'>
+            </div>
 
-            <div className='upper_text'>
-                <h1> Welcome To Wordle</h1>
-                <h3>{reveal}</h3>
+            <div className='center_panel'>
+
+                <div className='upper_text'>
+                    <h1> Welcome To Wordle</h1>
+                    <h3>{reveal}</h3>
+
+                </div>
+
+                <WordleBox content={[
+                    [inputList[0][0], inputList[0][1], inputList[0][2], inputList[0][3], inputList[0][4]],
+                    [inputList[1][0], inputList[1][1], inputList[1][2], inputList[1][3], inputList[1][4]],
+                    [inputList[2][0], inputList[2][1], inputList[2][2], inputList[2][3], inputList[2][4]],
+                    [inputList[3][0], inputList[3][1], inputList[3][2], inputList[3][3], inputList[3][4]],
+                    [inputList[4][0], inputList[4][1], inputList[4][2], inputList[4][3], inputList[4][4]]
+                ]} colorList={allColorList} ></WordleBox>
+
+                <InputBox currentVal={temp} callOnChange={(e) => handleInputOnChange(e)} submitAnswer={() => submitAnswer()}></InputBox>
 
             </div>
 
-            <WordleBox content={[
-                [inputList[0][0], inputList[0][1], inputList[0][2], inputList[0][3], inputList[0][4]],
-                [inputList[1][0], inputList[1][1], inputList[1][2], inputList[1][3], inputList[1][4]],
-                [inputList[2][0], inputList[2][1], inputList[2][2], inputList[2][3], inputList[2][4]],
-                [inputList[3][0], inputList[3][1], inputList[3][2], inputList[3][3], inputList[3][4]],
-                [inputList[4][0], inputList[4][1], inputList[4][2], inputList[4][3], inputList[4][4]]
-            ]} colorList={allColorList} ></WordleBox>
-
-            <InputBox currentVal={temp} callOnChange={(e) => handleInputOnChange(e)} submitAnswer={() => submitAnswer()}></InputBox>
-
+            <div className='right_panel'> </div>
         </div>
-
-        <div className='right_panel'> </div>
-
 
     </div>);
 };

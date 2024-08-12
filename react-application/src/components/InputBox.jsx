@@ -22,7 +22,7 @@ const InputBox = (props) => {
         <div
             className='inputBox'
             id="parentBox"
-            style={{ backgroundColor: isHovered ? 'gray' : 'white' }}
+            style={{ backgroundColor: isHovered ? 'aqua' : 'white' }}
         >
             <input
                 type='text'
