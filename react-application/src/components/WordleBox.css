@@ -3,12 +3,10 @@
     flex-flow: column;
     border-top: 2px solid black;
     border-left: 2px solid black;
-    box-shadow: 2px 2px 2px gray inset;
-    
+    box-shadow: 2px 2px 2px gray inset;  
 }
 
 .main_box li{
-   
     list-style-type: none;
     display: flex;
     flex-flow: row;

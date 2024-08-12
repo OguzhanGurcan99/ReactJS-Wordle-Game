@@ -1,26 +1,11 @@
-import React, { useRef, useEffect } from 'react';
 import './Navbar.css';
 
-
-
-    const Navbar = (props) => {
-        const letterRefs = useRef({});
-    
-        useEffect(() => {
-            props.animatedLetters.forEach((letter) => {
-                const div = letterRefs.current[letter];
-                if (div) {
-                    div.classList.add('fall');
-                }
-            });
-        }, [props.animatedLetters]);
-
+const Navbar = (props) => {
 
     return (
-
         <div className='navbar_root'>
             <div className="navbar">
-                <div id="A"  ref={(el) => (letterRefs.current[letter] = el)} >{props.view[0]} </div>
+                <div id="A"   >{props.view[0]} </div>
                 <div id="B">{props.view[1]}</div>
                 <div id="C">{props.view[2]}</div>
                 <div id="Ç">{props.view[3]}</div>
@@ -51,7 +36,6 @@ import './Navbar.css';
                 <div id="Z">{props.view[28]}</div>
             </div>
         </div>
-
     )
 };
 

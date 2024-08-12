@@ -17,7 +17,6 @@ const WordleBox = (props) => {
             <div className={props.colorList[1][4]}>{props.content[1][4]}</div>
         </li>
         <li>
-
             <div className={props.colorList[2][0]}>{props.content[2][0]}</div>
             <div className={props.colorList[2][1]}>{props.content[2][1]}</div>
             <div className={props.colorList[2][2]}>{props.content[2][2]}</div>
@@ -38,8 +37,6 @@ const WordleBox = (props) => {
             <div className={props.colorList[4][3]}>{props.content[4][3]}</div>
             <div className={props.colorList[4][4]}>{props.content[4][4]}</div>
         </li>
-
-
     </div>;
 };
 export default WordleBox;
